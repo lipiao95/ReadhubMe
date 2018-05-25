@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ReadhubMe</string>
+
+    <string name="hot_topic">热门话题</string>
+    <string name="technology_trends">科技动态</string>
+    <string name="developer_information">开发者资讯</string>
+    <string name="blockChain_alert">区块链快讯</string>
+    <string name="more">更多</string>
+
+    <string name="instant_read">即时查看</string>
+</resources>

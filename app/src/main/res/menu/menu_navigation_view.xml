@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_hot_topic"
+        android:icon="@drawable/ic_topic_selector"
+        android:title="@string/hot_topic" />
+    <item
+        android:id="@+id/menu_technology_trends"
+        android:icon="@drawable/ic_technology_selector"
+        android:title="@string/technology_trends" />
+    <item
+        android:id="@+id/menu_developer_information"
+        android:icon="@drawable/ic_developer_selector"
+        android:title="@string/developer_information" />
+    <item
+        android:id="@+id/menu_blockChain_alert"
+        android:icon="@drawable/ic_blockchain_selector"
+        android:title="@string/blockChain_alert" />
+    <item
+        android:id="@+id/menu_more"
+        android:icon="@drawable/ic_more_selector"
+        android:title="@string/more" />
+
+</menu>
