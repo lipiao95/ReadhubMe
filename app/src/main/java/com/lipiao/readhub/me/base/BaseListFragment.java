@@ -1,5 +1,6 @@
 package com.lipiao.readhub.me.base;
 
+import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -59,7 +60,6 @@ public class BaseListFragment extends BaseFragment {
         recyclerView = view.findViewById(R.id.recyclerView);
         fab = view.findViewById(R.id.fab);
 
-        // 这个崩溃，原因未知
 //        mBox = new DynamicBox(mActivity, frame_list_container);
 //        mBox.setClickListener(v -> {
 //
@@ -69,6 +69,20 @@ public class BaseListFragment extends BaseFragment {
         adapter = new MyAdapter();
         recyclerView.setLayoutManager(mManager);
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                fab.setVisibility(mManager.findFirstVisibleItemPosition() > 0 ? View.VISIBLE : View.GONE);
+            }
+        });
+        fab.setOnClickListener(v -> mManager.smoothScrollToPosition(recyclerView, null, 0));
+        swipeRefreshLayout.setColorSchemeColors(Color.parseColor("#607D8B"), Color.BLACK, Color.BLUE);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            adapter.clear();
+            initData();
+        });
 
     }
 
@@ -84,6 +98,7 @@ public class BaseListFragment extends BaseFragment {
                         Log.e(TAG, "size: " + baseData.data.size() + "");
                         List<HotTopic> data = baseData.data;
                         adapter.setData(data);
+                        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -91,6 +106,18 @@ public class BaseListFragment extends BaseFragment {
                         Log.e(TAG, "throwable: ", throwable);
                     }
                 });
+    }
+
+    public void onTabClick() {
+        if (mManager.findFirstCompletelyVisibleItemPosition() != 0) {
+            recyclerView.smoothScrollToPosition(0);
+            return;
+        }
+        if (!swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(true);
+            adapter.clear();
+            initData();
+        }
     }
 
     class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
@@ -118,7 +145,12 @@ public class BaseListFragment extends BaseFragment {
             return data.size();
         }
 
-         class MyHolder extends RecyclerView.ViewHolder{
+        public void clear() {
+            this.data.clear();
+            notifyDataSetChanged();
+        }
+
+        class MyHolder extends RecyclerView.ViewHolder{
             TextView txt_topic_title;
             TextView txt_topic_summary;
 

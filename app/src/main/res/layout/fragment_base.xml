@@ -14,7 +14,7 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_behavior = "@string/appbar_scrolling_view_behavior"/>
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <android.support.design.widget.FloatingActionButton
@@ -25,7 +25,7 @@
         android:layout_marginBottom="76dp"
         android:layout_marginRight="@dimen/margin_20"
         android:src="@drawable/ic_go_top"
-        app:backgroundTint="@color/colorPrimary"/>
+        app:backgroundTint="@color/colorPrimary" />
 
 
 </FrameLayout>

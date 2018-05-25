@@ -3,9 +3,11 @@ package com.lipiao.readhub.me;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.lipiao.readhub.me.base.BaseFragment;
+import com.lipiao.readhub.me.base.BaseListFragment;
 import com.lipiao.readhub.me.topic.HotTopicFragment;
 import com.lipiao.readhub.me.utils.BottomNavigationViewHelper;
 
@@ -80,17 +82,17 @@ public class MainFragment extends BaseFragment{
                     currentItem = 0;
                     break;
             }
-//                if (mBottomNavigationView.getSelectedItemId() == item.getItemId()) {
-//                    //当前页面已经为对应页面时，则回到顶部或刷新
-//                    Fragment currentFragment = mFragments[currentItem];
-//                    if (currentFragment instanceof BaseListFragment) {
-//                        ((BaseListFragment) currentFragment).onTabClick();
-//                    }
+                if (mBottomNavigationView.getSelectedItemId() == item.getItemId()) {
+                    //当前页面已经为对应页面时，则回到顶部或刷新
+                    Fragment currentFragment = mFragments[currentItem];
+                    if (currentFragment instanceof BaseListFragment) {
+                        ((BaseListFragment) currentFragment).onTabClick();
+                    }
 //                    if (currentFragment instanceof MoreFragment) {
 //                        ((MoreFragment) currentFragment).onTabClick();
 //                    }
-//                    return true;
-//                }
+                    return true;
+                }
             showHideFragment(mFragments[currentItem]);
             return true;
         });

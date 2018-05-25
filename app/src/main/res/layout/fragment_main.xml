@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -11,8 +11,8 @@
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
-            app:layout_scrollFlags="scroll|enterAlways">
+            android:background="@android:color/white" >
+            <!-- app:layout_scrollFlags="scroll|enterAlways"-->
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -31,9 +31,8 @@
         app:elevation="@dimen/bottom_navigation_view_elevation"
         app:itemIconTint="@color/selector_nav_bg"
         app:itemTextColor="@color/selector_nav_bg"
-        app:layout_behavior="com.lipiao.readhub.me.utils.BottomNavigationBehavior"
-        app:menu="@menu/menu_navigation_view"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_behavior="com.chihopang.readhub.widget.BottomNavigationBehavior"
+        app:menu="@menu/menu_navigation_view" />
 
     <FrameLayout
         android:id="@+id/frame_main_content"
@@ -41,4 +40,4 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize" />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>
