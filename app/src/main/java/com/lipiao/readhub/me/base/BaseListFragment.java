@@ -98,12 +98,17 @@ public class BaseListFragment extends BaseFragment {
                         Log.e(TAG, "size: " + baseData.data.size() + "");
                         List<HotTopic> data = baseData.data;
                         adapter.setData(data);
-                        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
+                        if (swipeRefreshLayout.isRefreshing()) {
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         Log.e(TAG, "throwable: ", throwable);
+                        if (swipeRefreshLayout.isRefreshing()) {
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
                     }
                 });
     }

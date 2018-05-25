@@ -31,7 +31,7 @@
         app:elevation="@dimen/bottom_navigation_view_elevation"
         app:itemIconTint="@color/selector_nav_bg"
         app:itemTextColor="@color/selector_nav_bg"
-        app:layout_behavior="com.chihopang.readhub.widget.BottomNavigationBehavior"
+        app:layout_behavior="com.lipiao.readhub.me.utils.BottomNavigationBehavior"
         app:menu="@menu/menu_navigation_view" />
 
     <FrameLayout
